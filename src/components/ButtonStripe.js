@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-const ButtonStripe = ({modeSelect, currentMode}) => {
+const ButtonStripe = ({modeSelect, currentMode, startButton}) => {
 
     const [modeButtonText, SetModeButtonText] = useState('Count up')
 
@@ -16,11 +16,15 @@ const ButtonStripe = ({modeSelect, currentMode}) => {
 
     return (
         <div>
+    <div className="mode-selection">
 
-            <h5>Mode Selector</h5>
+        <h5>Mode Selector</h5>
 
-            <button onClick={()=>modeSelect()}>{modeButtonText} </button>
+        <button onClick={()=>modeSelect()}>{modeButtonText} </button>
 
+    </div>
+
+            <button onClick={()=>{startButton()}}>start</button>
         </div>
     )
 }

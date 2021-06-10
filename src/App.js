@@ -16,6 +16,9 @@ import {
 
 function App() {
 
+
+    let ISRUNNING = false;
+
     const currentMode = useSelector(state => state.modeReducer.mode);
     const time = useSelector(state => state.stopwatchReducer.watch)
 
@@ -95,10 +98,42 @@ function App() {
         }
     }
 
+
+    //region Watch Logic
+
+    function startStop(){
+        ISRUNNING = !ISRUNNING;
+        watchEngine();
+    }
+
+    function watchEngine(){
+
+        if (ISRUNNING){
+
+            setTimeout(()=>{
+                console.log('run')
+
+                return watchEngine()
+
+            },2000)
+
+
+
+        }
+        else return null
+
+
+    }
+
+
+    //endregion Watch Logic
+
+
+
     return (
         <div className="App">
             <WatchScreen trimButtons={(info)=>trimButtons(info)}/>
-            <ButtonStripe modeSelect={()=>changeMode()} currentMode={currentMode}/>
+            <ButtonStripe modeSelect={()=>changeMode()} currentMode={currentMode} startButton={()=>{startStop()}}/>
         </div>
     );
 }
