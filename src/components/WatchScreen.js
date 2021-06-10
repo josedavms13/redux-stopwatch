@@ -32,7 +32,7 @@ function WatchScreen({trimButtons}) {
 
     /*
     * Button trim:
-    *   [ _time part_ (hour, minute, second) , _increase or decrease_ (1 : increase or 2:decrease)
+    *   [ _time part_ (hour, minute, second) , _increase or decrease_ (1 : increase or 2:decrease or 3 : reset)
     * */
 
 
@@ -48,15 +48,18 @@ function WatchScreen({trimButtons}) {
                 <div className="hours-trim">
                     <button onClick={()=>trimButtons(['h', 1])}>+</button>
                     <button onClick={()=>trimButtons(['h', 2])}>-</button>
+                    <button onClick={()=>trimButtons(['h', 3])}>R</button>
                 </div>
                 <div className="minutes-trim">
                     <button onClick={()=>trimButtons(['m', 1])}>+</button>
                     <button onClick={()=>trimButtons(['m', 2])}>-</button>
+                    <button onClick={()=>trimButtons(['m', 3])}>R</button>
                 </div>
 
                 <div className="seconds-trim">
                     <button onClick={()=>trimButtons(['s', 1])}>+</button>
                     <button onClick={()=>trimButtons(['s', 2])}>-</button>
+                    <button onClick={()=>trimButtons(['s', 3])}>R</button>
                 </div>
             </div>
         </div>

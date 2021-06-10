@@ -10,7 +10,7 @@ import {
     decreaseSeconds,
     increaseHours,
     increaseMinutes,
-    increaseSeconds
+    increaseSeconds, resetHours, resetMinutes, resetSeconds
 } from "./actions/stopwatchActions";
 
 
@@ -52,33 +52,45 @@ function App() {
             if(info[1]=== 1){
                 console.log('hour increase')
 
-                dispatch(increaseHours())
+                dispatch(increaseHours());
 
             }
             if(info[1]=== 2){
                 console.log('hour decreased')
-                dispatch(decreaseHours())
+                dispatch(decreaseHours());
+            }
+            if(info[1]=== 3){
+                console.log('hour reset')
+                dispatch(resetHours());
             }
         }
         if(info[0] === 'm'){
             if(info[1]=== 1){
                 console.log('minutes increase')
-                dispatch(increaseMinutes())
+                dispatch(increaseMinutes());
             }
             if(info[1]=== 2){
                 console.log('minutes decreased')
-                dispatch(decreaseMinutes())
+                dispatch(decreaseMinutes());
+            }
+            if(info[1]=== 3){
+                console.log('minutes reset')
+                dispatch(resetMinutes());
             }
         }
         if(info[0] === 's'){
             if(info[1]=== 1){
                 console.log('second increase')
 
-                dispatch(increaseSeconds())
+                dispatch(increaseSeconds());
             }
             if(info[1]=== 2){
                 console.log('second decreased')
                 dispatch(decreaseSeconds());
+            }
+            if(info[1]=== 3){
+                console.log('second reset')
+                dispatch(resetSeconds());
             }
         }
     }
