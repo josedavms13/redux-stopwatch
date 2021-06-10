@@ -3,17 +3,31 @@ import {useSelector, useDispatch} from "react-redux";
 import WatchScreen from "./components/WatchScreen";
 import ButtonStripe from "./components/ButtonStripe";
 import {setModeUp, setModeDown} from "./actions/modeActions";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
+
+import {
+    decreaseHours, decreaseMinutes,
+    decreaseSeconds,
+    increaseHours,
+    increaseMinutes,
+    increaseSeconds
+} from "./actions/stopwatchActions";
+
 
 function App() {
 
     const currentMode = useSelector(state => state.modeReducer.mode);
+    const time = useSelector(state => state.stopwatchReducer.watch)
 
     useEffect(()=>{
-        console.log(currentMode);
+        console.log('currentMode' , currentMode);
     },[currentMode])
 
+
+
+
     const dispatch = useDispatch();
+
 
 
     function changeMode (){
@@ -28,29 +42,43 @@ function App() {
         }
     }
 
+    const [screenTime , SetScreenTime]= useState(time);
+
     function trimButtons(info){
+
+        SetScreenTime(time)
+
         if(info[0] === 'h'){
             if(info[1]=== 1){
                 console.log('hour increase')
+
+                dispatch(increaseHours())
+
             }
             if(info[1]=== 2){
                 console.log('hour decreased')
+                dispatch(decreaseHours())
             }
         }
         if(info[0] === 'm'){
             if(info[1]=== 1){
                 console.log('minutes increase')
+                dispatch(increaseMinutes())
             }
             if(info[1]=== 2){
                 console.log('minutes decreased')
+                dispatch(decreaseMinutes())
             }
         }
         if(info[0] === 's'){
             if(info[1]=== 1){
-                console.log('minutes increase')
+                console.log('second increase')
+
+                dispatch(increaseSeconds())
             }
             if(info[1]=== 2){
-                console.log('minutes decreased')
+                console.log('second decreased')
+                dispatch(decreaseSeconds());
             }
         }
     }

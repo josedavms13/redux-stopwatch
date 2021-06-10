@@ -4,7 +4,7 @@ import stringifyTime from "../utilities/stringifyTime";
 
 function WatchScreen({trimButtons}) {
 
-    const time = useSelector(state => state.stopwatchReducer.watch)
+    const state = useSelector(state => state)
 
     const [seconds, SetSeconds] = useState('00')
     const [minutes, SetMinutes] = useState('00')
@@ -17,24 +17,17 @@ function WatchScreen({trimButtons}) {
 
     useEffect(() => {
 
+        const time = state.stopwatchReducer.watch
         SetSeconds(stringifyTime(time.second))
         SetMinutes(stringifyTime(time.minute))
         SetHours(stringifyTime(time.hour))
 
         console.log(time);
-    }, [time])
+    }, [state])
 
 
-    useEffect(() => {
 
-        console.log(dotsState);
-        if (dotsState) {
-            SetDots(' : ');
-        } else {
-            SetDots('   ')
-        }
 
-    }, [dotsState])
 
 
     /*
