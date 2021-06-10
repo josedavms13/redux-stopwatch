@@ -1,4 +1,5 @@
 
+import {type} from '../actions/modeActions'
 
 const INITIAL_STATE = {
     mode: 0
@@ -9,14 +10,16 @@ const modeReducer = (state = INITIAL_STATE, action)=>{
 
     switch (action.type){
 
-        case 'count_up':
+        case type.setCountUp:
             return{
-                ...state.mode = 1
+                ...state,
+                mode : 1
             }
 
-        case 'count_down':
+        case type.setCountDown:
             return {
-                ...state.mode = 2
+                ...state,
+                mode: 2
             }
 
         default:

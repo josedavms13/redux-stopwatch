@@ -1,4 +1,5 @@
 
+import {type} from "../actions/stopwatchActions";
 
 const INITIAL_STATE = {
     watch : {
@@ -11,53 +12,63 @@ const INITIAL_STATE = {
 const stopwatchReducer = (state = INITIAL_STATE, action)=>{
 
     switch (action.type){
-        case 'increase_second' :
+        case type.increaseSeconds :
             return {
-                ...state.watch.second += 1
+                ...state,
+                watch: state.watch.second +1
             }
 
-        case 'increase_minute' :
+        case type.decreaseSeconds :
             return {
-                ...state.watch.minute += 1
+                ...state,
+                watch: state.watch.second -1
             }
 
-        case 'increase_hour':
+        case type.increaseMinutes :
             return {
-                ...state.watch.hour += 1
-
-            }
-        case 'reset_second' :
-            return {
-                ...state.watch.second = 0
+                ...state,
+                watch: state.watch.minute +1
             }
 
-        case 'reset_minute' :
+        case type.decreaseMinutes :
             return {
-                ...state.watch.minute = 0
+                ...state,
+                watch: state.watch.minute -1
             }
 
-        case 'reset_hour':
+        case type.increaseHours :
             return {
-                ...state.watch.hour = 0
-
+                ...state,
+                watch: state.watch.hour +1
             }
 
-        case 'decrease_second' :
+        case type.decreaseHours:
             return {
-                ...state.watch.second -= 1
-            }
-
-        case 'decrease_minute' :
-            return {
-                ...state.watch.minute -= 1
-            }
-
-        case 'decrease_hour':
-            return {
-                ...state.watch.hour -= 1
+                ...state,
+                watch: state.watch.hour +1
 
             }
 
+        case type.resetSeconds :
+            return {
+                ...state,
+                watch: state.watch.second = 0
+
+            }
+
+        case type.resetMinutes :
+            return {
+                ...state,
+                watch: state.watch.minute = 0
+
+            }
+
+        case type.resetHours :
+            return {
+                ...state,
+                watch: state.watch.hour = 0
+
+            }
         default:
             return state
     }
