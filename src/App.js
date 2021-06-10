@@ -1,10 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
+import {useSelector} from "react-redux";
+import WatchScreen from "./components/WatchScreen";
+
 
 function App() {
+
+
+
+
   return (
     <div className="App">
-
+        <WatchScreen />
     </div>
   );
 }
