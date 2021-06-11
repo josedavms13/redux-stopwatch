@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 const ButtonStripe = ({modeSelect, currentMode, startButton}) => {
 
     const [modeButtonText, SetModeButtonText] = useState('Count up')
-
     useEffect(()=>{
 
         if(currentMode === 1){

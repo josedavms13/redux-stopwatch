@@ -2,7 +2,7 @@
 import {type} from '../actions/modeActions'
 
 const INITIAL_STATE = {
-    mode: 0
+    mode: 1
 }
 
 
